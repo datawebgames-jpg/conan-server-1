@@ -53,10 +53,10 @@ export default function HomePage() {
   const VOTE_URL = "https://topgameservers.net/conanexiles/server/nrcYSh89KdNehu8g4MS2";
 
   const servers = useMemo(() => [
-    { slug: "dragones", title: "DRAGONES Y DINOSAURIOS PVEVP", ip: "190.174.182.236", port: 7779, queryPort: 27017, image: "/servers/server1.png", settings: ["Cosecha: x10.0", "XP: x10.0", "Raideo: 17:00 a 23:00", "Dinos & Dragones"] },
-    { slug: "mods", title: "Los Antiguos PvPvE Best Mods", ip: "190.174.182.236", port: 7786, queryPort: 27026, image: "/servers/server3.png", settings: ["Cosecha: x4.0", "XP: x5.0", "Nivel: 300", "Mods: +40"] },
-    { slug: "vanilla", title: "EL EXILIO SIN MODS PVP FULL", ip: "190.174.182.236", port: 7777, queryPort: 27018, image: "/servers/server4.png", settings: ["Cosecha: x10.0", "XP: x10.0", "Vanilla", "PvP Full"] },
-    { slug: "siptah", title: "SIPTAH MAS MODS EEWA", ip: "190.174.182.236", port: 7781, queryPort: 27015, image: "/servers/server2.png", settings: ["Cosecha: x5.0", "XP: x10.0", "Mapa: Siptah", "EEWA"] }
+    { slug: "dragones", title: "DRAGONES Y DINOSAURIOS PVEVP", ip: "190.174.180.244", port: 7779, queryPort: 27017, image: "/servers/server1.png", settings: ["Cosecha: x10.0", "XP: x10.0", "Raideo: 17:00 a 23:00", "Dinos & Dragones"] },
+    { slug: "mods", title: "Los Antiguos PvPvE Best Mods", ip: "190.174.180.244", port: 7786, queryPort: 27026, image: "/servers/server3.png", settings: ["Cosecha: x4.0", "XP: x5.0", "Nivel: 300", "Mods: +40"] },
+    { slug: "vanilla", title: "EL EXILIO SIN MODS PVP FULL", ip: "190.174.180.244", port: 7777, queryPort: 27018, image: "/servers/server4.png", settings: ["Cosecha: x10.0", "XP: x10.0", "Vanilla", "PvP Full"] },
+    { slug: "siptah", title: "SIPTAH MAS MODS EEWA", ip: "190.174.180.244", port: 7781, queryPort: 27015, image: "/servers/server2.png", settings: ["Cosecha: x5.0", "XP: x10.0", "Mapa: Siptah", "EEWA"] }
   ], []);
 
   return (
