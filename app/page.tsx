@@ -59,8 +59,8 @@ export default function HomePage() {
     slug: "legion", 
     title: "LEGIÓN DE REYES", 
     ip: "190.174.176.46", 
-    port: 7783, 
-    queryPort: 27026,
+    port: 7777, 
+    queryPort: 27017,
     image: "/servers/legion_bg.jpg",
   };
 
