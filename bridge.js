@@ -243,6 +243,40 @@ async function syncRanking() {
     console.error('[bridge] Error sync ranking:', e.message);
   }
 }
+async function syncClans() {
+  try {
+
+    const raw = await rcon(
+      `sql SELECT
+        CAST(g.name AS TEXT) as clan,
+        g.owner,
+        COUNT(c.id) as members_count
+       FROM guilds g
+       LEFT JOIN characters c ON c.guild = g.guildId
+       GROUP BY g.guildId`
+    );
+
+    const rows = parseSqlRows(raw);
+
+    if (!rows.length) return;
+
+    const upserts = rows.map(r => ({
+      clan_name: r.clan,
+      leader_id: r.owner,
+      members_count: parseInt(r.members_count) || 0,
+      updated_at: new Date().toISOString()
+    }));
+
+    await supabase
+      .from('clans')
+      .upsert(upserts, { onConflict: 'clan_name' });
+
+    console.log(`[bridge] ${rows.length} clanes sincronizados`);
+
+  } catch (e) {
+    console.error('[bridge] Error sync clans:', e.message);
+  }
+}
 
 // ── Loop principal ────────────────────────────────────
 
@@ -257,6 +291,7 @@ async function run() {
   await syncOnlinePlayers();
   await deliverPendingItems();
   await syncRanking();
+  await syncClans();
 
   // Online + entregas + verificaciones: cada 30s
   setInterval(async () => {
@@ -266,6 +301,7 @@ async function run() {
   }, 30_000);
   // Ranking: cada 5 min
   setInterval(syncRanking, 300_000);
+  setInterval(syncClans, 300000);
 }
 
 run();
